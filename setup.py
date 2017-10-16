@@ -37,7 +37,7 @@ setup(
     scripts=[],
 
     provides=[],
-    install_requires=[''],
+    install_requires=['cliff', 'owslib'],
 
     namespace_packages=[],
     packages=find_packages(),
@@ -48,7 +48,13 @@ setup(
             'melusine = melusine.main:main'
         ],
         'melusine': [
-            'simple = melusine.simple:Simple',
+            'connect = melusine.connect:Connect',
+            'disconnect = melusine.connect:Disconnect',
+            'info = melusine.info:Info',
+            'layers = melusine.layers:Layers',
+            'operations = melusine.ops:Operations',
+            'servers = melusine.servers:Servers',
+            'map = melusine.map:Map'
         ],
     },
 
