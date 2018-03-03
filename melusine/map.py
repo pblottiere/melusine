@@ -11,7 +11,8 @@ class Map(Command):
         parser.add_argument('--crs', nargs='?')
         parser.add_argument('--bbox', nargs='?')
         parser.add_argument('--transparent', nargs='?', default=True)
-        parser.add_argument('--size', nargs='?')
+        parser.add_argument('--width', nargs='?')
+        parser.add_argument('--height', nargs='?')
         parser.add_argument('--format', nargs='?')
         parser.add_argument('--output', nargs='?')
         return parser
@@ -45,9 +46,15 @@ class Map(Command):
                     default_layer.boundingBox[3],
                     default_layer.boundingBox[2])
 
-        size = parsed_args.size
-        if not size:
-            size=(400,400)
+        height = parsed_args.height
+        if not height:
+            height = 400
+
+        width = parsed_args.width
+        if not width:
+            width = 400
+
+        size=(width,height)
 
         format = parsed_args.format
         if not format:
@@ -72,9 +79,4 @@ class Map(Command):
         out.write(img.read())
         out.close()
 
-
-class Disconnect(Command):
-
-    def take_action(self, parsed_args):
-        settings.SERVER = None
-        self.app.success()
+        self.app.write('\n')

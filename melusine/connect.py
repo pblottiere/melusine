@@ -23,8 +23,8 @@ class Connect(Command):
 
         try:
             settings.SERVER = WebMapService(server, version='1.3.0')
-        except:
-            self.app.error('Invalid URL')
+        except Exception as e:
+            self.app.error('Invalid URL ({})'.format(e))
             return
 
         settings.SERVER.server = server

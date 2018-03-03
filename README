@@ -5,10 +5,11 @@ Install
 -------
 
 ````
+$ git clone https://github.com/pblottiere/melusine
 $ mkdir -p venv
 $ virtualenv -p /usr/bin/python3 venv
 $ source venv/bin/activate
-$ pip install cliff
+$ pip install .
 ````
 
 Usage

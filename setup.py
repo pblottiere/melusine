@@ -54,7 +54,8 @@ setup(
             'layers = melusine.layers:Layers',
             'operations = melusine.ops:Operations',
             'servers = melusine.servers:Servers',
-            'map = melusine.map:Map'
+            'map = melusine.map:Map',
+            'formats = melusine.formats:Formats'
         ],
     },
 
