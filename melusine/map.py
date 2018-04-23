@@ -10,7 +10,7 @@ class Map(Command):
         parser.add_argument('layers', nargs='*')
         parser.add_argument('--crs', nargs='?')
         parser.add_argument('--bbox', nargs='?')
-        parser.add_argument('--transparent', nargs='?', default=True)
+        parser.add_argument('--transparent', nargs='?', default=False)
         parser.add_argument('--width', nargs='?')
         parser.add_argument('--height', nargs='?')
         parser.add_argument('--format', nargs='?')
@@ -45,6 +45,8 @@ class Map(Command):
                     default_layer.boundingBox[0],
                     default_layer.boundingBox[3],
                     default_layer.boundingBox[2])
+        else:
+            bbox = list( map(float, bbox.split(',')) )
 
         height = parsed_args.height
         if not height:
@@ -67,13 +69,13 @@ class Map(Command):
         self.app.write('GetMap request parameters\n')
         self.app.write('  output        {}'.format(output) )
 
-        img = server.getmap( layers=layers,
-                             srs=crs,
-                             bbox=bbox,
-                             size=size,
-                             format=format,
-                             styles = [''],
-                             transparent=True)
+        img = server.getmap(layers=layers,
+                            srs=crs,
+                            bbox=bbox,
+                            size=size,
+                            format=format,
+                            styles = [''],
+                            transparent=parsed_args.transparent)
 
         out = open(output, 'wb')
         out.write(img.read())
