@@ -21,8 +21,19 @@ $ melusine
   Degree
   InteractiveInstruments
   OSM
+
 (melusine) connect geoserver
 SUCCESS
+
+(melusine) info
+Server information
+  url         http://cite.demo.opengeo.org:8080/geoserver_wms13/wms
+  title       None
+  abstract    None
+  type        WMS
+  version     1.3.0
+  layers      14
+
 (melusine) layers
 List of available layers
   cite:Autos
@@ -47,7 +58,14 @@ Layer information for 'cite:Forests'
   extent      (-0.001, -0.002, 0.004, 0.002, 'CRS:84')
   styles      Forests
 
+(melusine) operations
+GetCapabilities
+GetMap
+GetFeatureInf
+
 (melusine) map cite:Forests
 GetMap request parameters
   output        /tmp/melusine.jpeg
+
+(melusine) disconnect
 ````
