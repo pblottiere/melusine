@@ -5,7 +5,7 @@
 ````
 $ git clone https://github.com/pblottiere/melusine
 $ mkdir -p venv
-$ virtualenv -p /usr/bin/python3 venv
+$ virtualenv -p /usr/bin/python2 venv
 $ source venv/bin/activate
 $ pip install .
 ````
