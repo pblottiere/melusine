@@ -1,7 +1,7 @@
 import logging
 from cliff.command import Command
 
-from melusine import settings
+from mscli import settings
 
 
 class Servers(Command):

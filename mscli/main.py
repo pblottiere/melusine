@@ -2,7 +2,7 @@ import sys
 from cliff.app import App
 from cliff.commandmanager import CommandManager
 import cmd2
-from melusine import settings
+from mscli import settings
 
 
 class Melusine(App):
@@ -11,14 +11,14 @@ class Melusine(App):
         super(Melusine, self).__init__(
             description='Melusine',
             version='0.1',
-            command_manager=CommandManager('melusine'),
+            command_manager=CommandManager('mscli'),
             deferred_help=True,
             )
         settings.init()
 
     def initialize_app(self, argv):
         self.LOG.debug('initialize_app')
-        print('melusine (0.1)')
+        print('mscli (0.1)')
         print('Type "help" for help')
         print()
 

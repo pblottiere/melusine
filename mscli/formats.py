@@ -1,5 +1,5 @@
 from cliff.command import Command
-from melusine import settings
+from mscli import settings
 
 
 class Formats(Command):

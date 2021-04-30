@@ -1,6 +1,6 @@
 from cliff.command import Command
 from owslib.wms import WebMapService
-from melusine import settings
+from mscli import settings
 
 
 class Connect(Command):

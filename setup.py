@@ -1,63 +1,28 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from setuptools import setup
 
-PROJECT = 'melusine'
-
-# Change docs/sphinx/conf.py too!
-VERSION = '0.1'
-
-from setuptools import setup, find_packages
-
-try:
-    long_description = open('README.rst', 'rt').read()
-except IOError:
-    long_description = ''
+requirements = (
+    'cliff',
+    'owslib'
+)
 
 setup(
-    name=PROJECT,
-    version=VERSION,
-
-    description='Melusine',
-    long_description=long_description,
-
-    author='Paul blottiere',
-    author_email='paul.blottiere@gmail.com',
-
-    url='https://github.com/pblottiere/melusine',
-    download_url='https://github.com/pblottiere/melusine/tarball/master',
-
-    classifiers=['Development Status :: 3 - Alpha',
-                 'Programming Language :: Python :: 3',
-                 'Programming Language :: Python :: 3.2',
-                 'Intended Audience :: Developers',
-                 'Environment :: Console',
-                 ],
-
-    platforms=['Any'],
-
-    scripts=[],
-
-    provides=[],
-    install_requires=['cliff', 'owslib'],
-
-    namespace_packages=[],
-    packages=find_packages(),
-    include_package_data=True,
-
+    name="mscli",
+    version="0.1",
+    install_requires=requirements,
     entry_points={
         'console_scripts': [
-            'melusine = melusine.main:main'
-        ],
-        'melusine': [
-            'connect = melusine.connect:Connect',
-            'disconnect = melusine.connect:Disconnect',
-            'info = melusine.info:Info',
-            'layers = melusine.layers:Layers',
-            'operations = melusine.ops:Operations',
-            'servers = melusine.servers:Servers',
-            'map = melusine.map:Map',
-            'formats = melusine.formats:Formats'
-        ],
-    },
-
-    zip_safe=False,
+            'mscli = mscli.main:main'
+            ],
+        'mscli': [
+            'connect = mscli.connect:Connect',
+            'disconnect = mscli.connect:Disconnect',
+            'info = mscli.info:Info',
+            'layers = mscli.layers:Layers',
+            'operations = mscli.ops:Operations',
+            'servers = mscli.servers:Servers',
+            'map = mscli.map:Map',
+            'formats = mscli.formats:Formats'
+            ],
+        },
 )
