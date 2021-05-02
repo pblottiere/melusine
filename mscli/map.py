@@ -1,6 +1,7 @@
 from cliff.command import Command
 from owslib.wms import WebMapService
-from melusine import settings
+from mscli import settings
+import subprocess
 
 
 class Map(Command):
@@ -33,21 +34,28 @@ class Map(Command):
             if l not in server.contents:
                 self.app.error('Invalid layer \'{}\''.format(l))
 
+        print(0)
+        default_layer = server[layers[0]]
+        print(1)
         default_layer = server[layers[0]]
         bbox = parsed_args.bbox
+        print(2)
         crs = parsed_args.crs
+        print(3)
 
         if not crs:
             crs = default_layer.boundingBox[4]
 
+        print(4)
         if not bbox:
-            bbox = (default_layer.boundingBox[1],
-                    default_layer.boundingBox[0],
-                    default_layer.boundingBox[3],
-                    default_layer.boundingBox[2])
+            bbox = (default_layer.boundingBox[0],
+                    default_layer.boundingBox[1],
+                    default_layer.boundingBox[2],
+                    default_layer.boundingBox[3])
         else:
             bbox = list( map(float, bbox.split(',')) )
 
+        print(5)
         height = parsed_args.height
         if not height:
             height = 400
@@ -69,6 +77,12 @@ class Map(Command):
         self.app.write('GetMap request parameters\n')
         self.app.write('  output        {}'.format(output) )
 
+        print(layers)
+        print(crs)
+        print(bbox)
+        print(size)
+        print(format)
+
         img = server.getmap(layers=layers,
                             srs=crs,
                             bbox=bbox,
@@ -80,5 +94,8 @@ class Map(Command):
         out = open(output, 'wb')
         out.write(img.read())
         out.close()
+
+        command = 'tycat /tmp/melusine.jpeg'
+        subprocess.call(command.split())
 
         self.app.write('\n')

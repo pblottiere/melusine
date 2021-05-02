@@ -5,11 +5,11 @@ import cmd2
 from mscli import settings
 
 
-class Melusine(App):
+class MsCli(App):
 
     def __init__(self):
-        super(Melusine, self).__init__(
-            description='Melusine',
+        super().__init__(
+            description='mscli',
             version='0.1',
             command_manager=CommandManager('mscli'),
             deferred_help=True,
@@ -40,7 +40,7 @@ class Melusine(App):
         self.stdout.write('SUCCESS\n\n')
 
 def main(argv=sys.argv[1:]):
-    myapp = Melusine()
+    myapp = MsCli()
     return myapp.run(argv)
 
 

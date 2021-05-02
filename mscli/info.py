@@ -1,11 +1,12 @@
 from cliff.command import Command
 
-from melusine import settings
+from mscli import settings
 
 
 class Info(Command):
 
     def get_parser(self, prog_name):
+        print("Info.get_parser")
         parser = super(Info, self).get_parser(prog_name)
         parser.add_argument('layer', nargs='?')
         return parser

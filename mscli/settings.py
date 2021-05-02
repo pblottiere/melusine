@@ -36,3 +36,9 @@ def init():
                  'WMS',
                  '1.3.0')
     SERVERS[osm.name] = osm
+
+    geobretagne = Server('GeoBretagne',
+                 'https://geobretagne.fr/geoserver/photo/wms',
+                 'WMS',
+                 '1.3.0')
+    SERVERS[geobretagne.name] = geobretagne

@@ -17,12 +17,9 @@ Example:
 ````
 $ mscli
 (mscli) servers
-  Geoserver
-  Degree
-  InteractiveInstruments
-  OSM
+  geobretagne
 
-(mscli) connect geoserver
+(mscli) connect geobretagne
 SUCCESS
 
 (mscli) info

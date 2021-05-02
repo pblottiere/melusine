@@ -2,3 +2,4 @@ mscli.egg-info
 build
 dist
 venv
+mscli/__pycache__/
